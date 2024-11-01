@@ -329,6 +329,5 @@
     },
     "defaultCollection": "@nrwl/schematics"
   },
-  "schematics": {},
-  "defaultProject": "todo"
+  "schematics": {}
 }

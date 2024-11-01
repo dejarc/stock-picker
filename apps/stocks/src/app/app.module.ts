@@ -21,7 +21,7 @@ import { environment } from '../environments/environment';
       {
         path: '',
         loadChildren:
-          '@coding-challenge/stocks/feature-shell#StocksFeatureShellModule'
+          () => import('@coding-challenge/stocks/feature-shell').then(m => m.StocksFeatureShellModule)
       }
     ]),
     NoopAnimationsModule,
