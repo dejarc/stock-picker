@@ -16,7 +16,7 @@
               "libs/stocks/data-access-price-query/tsconfig.lib.json",
               "libs/stocks/data-access-price-query/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/stocks/data-access-price-query/**"]
           }
         },
         "test": {
@@ -102,7 +102,7 @@
               "apps/stocks/tsconfig.app.json",
               "apps/stocks/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!apps/stocks/**"]
           }
         },
         "test": {
@@ -160,7 +160,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/stocks-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!apps/stocks-e2e/**"]
           }
         }
       }
@@ -178,7 +178,7 @@
               "libs/stocks/feature-shell/tsconfig.lib.json",
               "libs/stocks/feature-shell/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/stocks/feature-shell/**"]
           }
         },
         "test": {
@@ -205,7 +205,7 @@
               "libs/shared/ui/chart/tsconfig.lib.json",
               "libs/shared/ui/chart/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/chart/**"]
           }
         },
         "test": {
@@ -232,7 +232,7 @@
               "libs/stocks/data-access-app-config/tsconfig.lib.json",
               "libs/stocks/data-access-app-config/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/stocks/data-access-app-config/**"]
           }
         },
         "test": {
@@ -288,7 +288,7 @@
               "apps/stocks-api/tsconfig.app.json",
               "apps/stocks-api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!apps/stocks-api/**"]
           }
         },
         "test": {
