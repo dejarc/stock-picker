@@ -16,13 +16,11 @@
               "libs/stocks/data-access-price-query/tsconfig.lib.json",
               "libs/stocks/data-access-price-query/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stocks/data-access-price-query/jest.config.js",
             "tsConfig": "libs/stocks/data-access-price-query/tsconfig.spec.json",
@@ -47,13 +45,8 @@
             "main": "apps/stocks/src/main.ts",
             "polyfills": "apps/stocks/src/polyfills.ts",
             "tsConfig": "apps/stocks/tsconfig.app.json",
-            "assets": [
-              "apps/stocks/src/favicon.ico",
-              "apps/stocks/src/assets"
-            ],
-            "styles": [
-              "apps/stocks/src/styles.css"
-            ],
+            "assets": ["apps/stocks/src/favicon.ico", "apps/stocks/src/assets"],
+            "styles": ["apps/stocks/src/styles.css"],
             "scripts": [],
             "es5BrowserSupport": true
           },
@@ -109,13 +102,11 @@
               "apps/stocks/tsconfig.app.json",
               "apps/stocks/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/stocks/jest.config.js",
             "tsConfig": "apps/stocks/tsconfig.spec.json",
@@ -153,7 +144,7 @@
       "prefix": "",
       "architect": {
         "e2e": {
-          "builder": "@nrwl/builders:cypress",
+          "builder": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/stocks-e2e/cypress.json",
             "tsConfig": "apps/stocks-e2e/tsconfig.e2e.json",
@@ -169,9 +160,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/stocks-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -189,13 +178,11 @@
               "libs/stocks/feature-shell/tsconfig.lib.json",
               "libs/stocks/feature-shell/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stocks/feature-shell/jest.config.js",
             "tsConfig": "libs/stocks/feature-shell/tsconfig.spec.json",
@@ -218,13 +205,11 @@
               "libs/shared/ui/chart/tsconfig.lib.json",
               "libs/shared/ui/chart/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui/chart/jest.config.js",
             "tsConfig": "libs/shared/ui/chart/tsconfig.spec.json",
@@ -247,13 +232,11 @@
               "libs/stocks/data-access-app-config/tsconfig.lib.json",
               "libs/stocks/data-access-app-config/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stocks/data-access-app-config/jest.config.js",
             "tsConfig": "libs/stocks/data-access-app-config/tsconfig.spec.json"
@@ -270,14 +253,12 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@nrwl/builders:node-build",
+          "builder": "@nrwl/node:build",
           "options": {
             "outputPath": "dist/apps/stocks-api",
             "main": "apps/stocks-api/src/main.ts",
             "tsConfig": "apps/stocks-api/tsconfig.app.json",
-            "assets": [
-              "apps/stocks-api/src/assets"
-            ]
+            "assets": ["apps/stocks-api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -295,7 +276,7 @@
           }
         },
         "serve": {
-          "builder": "@nrwl/builders:node-execute",
+          "builder": "@nrwl/node:execute",
           "options": {
             "buildTarget": "stocks-api:build"
           }
@@ -307,13 +288,11 @@
               "apps/stocks-api/tsconfig.app.json",
               "apps/stocks-api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/stocks-api/jest.config.js",
             "tsConfig": "apps/stocks-api/tsconfig.spec.json"
@@ -327,7 +306,7 @@
       "typescriptMismatch": false,
       "versionMismatch": false
     },
-    "defaultCollection": "@nrwl/schematics"
+    "defaultCollection": "@nrwl/angular"
   },
   "schematics": {}
 }

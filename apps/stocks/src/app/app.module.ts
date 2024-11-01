@@ -8,7 +8,7 @@ import { StocksDataAccessPriceQueryModule } from '@coding-challenge/stocks/data-
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { NxModule } from '@nrwl/nx';
+import { NxModule } from '@nrwl/angular';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 
@@ -20,8 +20,10 @@ import { environment } from '../environments/environment';
     RouterModule.forRoot([
       {
         path: '',
-        loadChildren:
-          () => import('@coding-challenge/stocks/feature-shell').then(m => m.StocksFeatureShellModule)
+        loadChildren: () =>
+          import('@coding-challenge/stocks/feature-shell').then(
+            m => m.StocksFeatureShellModule
+          )
       }
     ]),
     NoopAnimationsModule,
