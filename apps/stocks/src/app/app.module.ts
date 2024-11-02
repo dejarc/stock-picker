@@ -18,14 +18,11 @@ import { environment } from '../environments/environment';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     CommonModule,
     RouterModule.forRoot([
-      {
+    {
         path: '',
-        loadChildren: () =>
-          import('@coding-challenge/stocks/feature-shell').then(
-            m => m.StocksFeatureShellModule
-          )
-      }
-    ]),
+        loadChildren: () => import('@coding-challenge/stocks/feature-shell').then(m => m.StocksFeatureShellModule)
+    }
+], { relativeLinkResolution: 'legacy' }),
     NoopAnimationsModule,
     NxModule.forRoot(),
     StoreModule.forRoot({}),

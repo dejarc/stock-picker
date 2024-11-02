@@ -50,7 +50,11 @@
             "tsConfig": "apps/stocks/tsconfig.app.json",
             "assets": ["apps/stocks/src/favicon.ico", "apps/stocks/src/assets"],
             "styles": ["apps/stocks/src/styles.css"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "zone.js",
+              "date-fns"
+            ]
           },
           "configurations": {
             "production": {
