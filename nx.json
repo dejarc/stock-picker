@@ -9,22 +9,17 @@
   },
   "projects": {
     "stocks-data-access-price-query": {
-      "tags": [
-        "type:data-access",
-        "scope:stocks"
-      ]
+      "tags": ["type:data-access", "scope:stocks"]
     },
     "stocks": {
       "tags": []
     },
     "stocks-e2e": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["stocks"]
     },
     "stocks-feature-shell": {
-      "tags": [
-        "scope:stocks",
-        "type:feature"
-      ]
+      "tags": ["scope:stocks", "type:feature"]
     },
     "shared-ui-chart": {
       "tags": []
@@ -33,9 +28,15 @@
       "tags": []
     },
     "stocks-api": {
-      "tags": [
-        "platform:server"
-      ]
+      "tags": ["platform:server"]
+    }
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
     }
   }
 }
