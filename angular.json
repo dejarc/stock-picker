@@ -50,10 +50,14 @@
             "main": "apps/stocks/src/main.ts",
             "polyfills": "apps/stocks/src/polyfills.ts",
             "tsConfig": "apps/stocks/tsconfig.app.json",
-            "assets": ["apps/stocks/src/favicon.ico", "apps/stocks/src/assets"],
-            "styles": ["apps/stocks/src/styles.css"],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "assets": [
+              "apps/stocks/src/favicon.ico",
+              "apps/stocks/src/assets"
+            ],
+            "styles": [
+              "apps/stocks/src/styles.css"
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -318,7 +322,6 @@
   },
   "cli": {
     "warnings": {
-      "typescriptMismatch": false,
       "versionMismatch": false
     },
     "defaultCollection": "@nrwl/angular"
