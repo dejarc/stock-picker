@@ -18,7 +18,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/stocks/data-access-price-query/**"
+              "!libs/stocks/data-access-price-query/**/*"
             ]
           }
         },
@@ -26,8 +26,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stocks/data-access-price-query/jest.config.js",
-            "tsConfig": "libs/stocks/data-access-price-query/tsconfig.spec.json",
-            "setupFile": "libs/stocks/data-access-price-query/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -50,13 +48,8 @@
             "main": "apps/stocks/src/main.ts",
             "polyfills": "apps/stocks/src/polyfills.ts",
             "tsConfig": "apps/stocks/tsconfig.app.json",
-            "assets": [
-              "apps/stocks/src/favicon.ico",
-              "apps/stocks/src/assets"
-            ],
-            "styles": [
-              "apps/stocks/src/styles.css"
-            ],
+            "assets": ["apps/stocks/src/favicon.ico", "apps/stocks/src/assets"],
+            "styles": ["apps/stocks/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -122,8 +115,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/stocks/jest.config.js",
-            "tsConfig": "apps/stocks/tsconfig.spec.json",
-            "setupFile": "apps/stocks/src/test-setup.ts",
             "passWithNoTests": true
           }
         },
@@ -171,7 +162,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/stocks-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**", "!apps/stocks-e2e/**"]
+            "exclude": ["**/node_modules/**", "!apps/stocks-e2e/**/*"]
           }
         }
       }
@@ -189,15 +180,13 @@
               "libs/stocks/feature-shell/tsconfig.lib.json",
               "libs/stocks/feature-shell/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/stocks/feature-shell/**"]
+            "exclude": ["**/node_modules/**", "!libs/stocks/feature-shell/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stocks/feature-shell/jest.config.js",
-            "tsConfig": "libs/stocks/feature-shell/tsconfig.spec.json",
-            "setupFile": "libs/stocks/feature-shell/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -217,15 +206,13 @@
               "libs/shared/ui/chart/tsconfig.lib.json",
               "libs/shared/ui/chart/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui/chart/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/chart/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui/chart/jest.config.js",
-            "tsConfig": "libs/shared/ui/chart/tsconfig.spec.json",
-            "setupFile": "libs/shared/ui/chart/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
@@ -247,7 +234,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/stocks/data-access-app-config/**"
+              "!libs/stocks/data-access-app-config/**/*"
             ]
           }
         },
@@ -255,7 +242,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/stocks/data-access-app-config/jest.config.js",
-            "tsConfig": "libs/stocks/data-access-app-config/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -306,14 +292,13 @@
               "apps/stocks-api/tsconfig.app.json",
               "apps/stocks-api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/stocks-api/**"]
+            "exclude": ["**/node_modules/**", "!apps/stocks-api/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/stocks-api/jest.config.js",
-            "tsConfig": "apps/stocks-api/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }

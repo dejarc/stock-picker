@@ -20,6 +20,8 @@ import {
   PolygonPriceQueryResponse
 } from './price-query.type';
 import { format, subMonths, subYears } from 'date-fns';
+import { Observable } from 'rxjs';
+import { Action } from '@ngrx/store';
 @Injectable()
 export class PriceQueryEffects {
   @Effect() loadPriceQuery$ = this.dataPersistence.fetch(
