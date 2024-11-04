@@ -54,7 +54,8 @@
             "allowedCommonJsDependencies": [
               "zone.js",
               "date-fns"
-            ]
+            ],
+            "sourceMap": true
           },
           "configurations": {
             "production": {

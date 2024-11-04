@@ -18,3 +18,4 @@
 *.sublime-workspace
 .vscode/
 # IDE - VSCode
+/.angular
