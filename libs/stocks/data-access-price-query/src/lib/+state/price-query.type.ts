@@ -29,7 +29,11 @@ export type PriceQueryResponse = {
   label: string;
   changeOverTime: number;
 };
-
+export type ProductsRequest = {
+  startDate: string;
+  endDate: string;
+  symbol: string;
+};
 export type PolygonPriceQueryResponse = {
   c: number;
   h: number;
