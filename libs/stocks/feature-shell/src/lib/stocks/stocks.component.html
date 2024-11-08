@@ -16,19 +16,34 @@
       >
     </mat-error>
   </mat-form-field>
-
   <mat-form-field>
-    <mat-label>Favorite time period</mat-label>
-    <mat-select formControlName="period">
-      <mat-option
-        *ngFor="let timePeriod of timePeriods"
-        [value]="timePeriod.value"
-      >
-        {{ timePeriod.viewValue }}
-      </mat-option>
-    </mat-select>
+    <input matInput [max]="maxDate" formControlName="startPicker" [matDatepicker]="startPicker" placeholder="Choose a start date" (selectionchange)="updateDateOnInvalidRange()">
+    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+    <mat-datepicker #startPicker></mat-datepicker>
+    <mat-error
+    ><span
+      *ngIf="
+        !stockPickerForm.get('startPicker').valid &&
+        stockPickerForm.get('startPicker').touched
+      "
+      >Please enter a valid start date</span
+    >
+  </mat-error>
   </mat-form-field>
-
+  <mat-form-field>
+    <input matInput [max]="maxDate" formControlName="endPicker" [matDatepicker]="endPicker" placeholder="Choose an end date" (selectionchange)="updateDateOnInvalidRange()">
+    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker></mat-datepicker>
+    <mat-error
+    ><span
+      *ngIf="
+        !stockPickerForm.get('endPicker').valid &&
+        stockPickerForm.get('endPicker').touched
+      "
+      >Please enter a valid end date</span
+    >
+  </mat-error>
+  </mat-form-field>
   <button (click)="fetchQuote()" mat-raised-button>Go</button>
 </form>
 <div></div>
