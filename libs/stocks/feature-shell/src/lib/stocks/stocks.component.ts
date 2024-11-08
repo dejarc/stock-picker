@@ -13,7 +13,7 @@ export class StocksComponent implements OnInit {
   period: string;
 
   quotes$ = this.priceQuery.priceQueries$;
-
+  error$ = this.priceQuery.priceQueryError$;
   timePeriods = [
     { viewValue: 'All available data', value: 'max' },
     { viewValue: 'Two years', value: '2y' },

@@ -4,6 +4,7 @@ import {
   PriceQueryState,
   PRICEQUERY_FEATURE_KEY
 } from './price-query.reducer';
+const { selectAll } = priceQueryAdapter.getSelectors();
 
 const getPriceQueryState = createFeatureSelector<PriceQueryState>(
   PRICEQUERY_FEATURE_KEY
@@ -14,9 +15,16 @@ export const getSelectedSymbol = createSelector(
   (state: PriceQueryState) => state.selectedSymbol
 );
 
-const { selectAll } = priceQueryAdapter.getSelectors();
 
 export const getAllPriceQueries = createSelector(
   getPriceQueryState,
   selectAll
 );
+
+export const getPriceQueryError = createSelector(
+  getPriceQueryState,
+  state => {
+    return state.error;
+  }
+)
+

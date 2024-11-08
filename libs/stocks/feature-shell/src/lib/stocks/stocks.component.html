@@ -28,8 +28,10 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-
-  <button (click)="fetchQuote()" mat-raised-button>Go</button>
+  <div *ngIf="error$ | async as errorMessage" style="color: red;font-size: large;">
+    {{errorMessage}}
+  </div>
+  <button style="background-color: lightskyblue;" (click)="fetchQuote()" mat-raised-button>Go</button>
 </form>
 <div></div>
 <coding-challenge-chart [data$]="quotes$"></coding-challenge-chart>

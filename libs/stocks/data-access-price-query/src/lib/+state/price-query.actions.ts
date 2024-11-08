@@ -15,7 +15,7 @@ export class FetchPriceQuery implements Action {
 
 export class PriceQueryFetchError implements Action {
   readonly type = PriceQueryActionTypes.PriceQueryFetchError;
-  constructor(public error: any) {}
+  constructor(public error: string) {}
 }
 
 export class PriceQueryFetched implements Action {
