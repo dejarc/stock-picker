@@ -1,0 +1,6 @@
+[
+  "./apps/stocks/src/environments/environment.prod.ts",
+  "./apps/stocks/src/environments/environment.ts",
+  "./apps/stocks-api/src/environments/environment.prod.ts",
+  "./apps/stocks-api/src/environments/environment.ts"
+]
