@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const rootDir = process.cwd();
 const configPaths = require(`${rootDir}/tools/configPaths.json`);
+const {execSync} = require('child_process');
 function generateTemplate(apiKey, production) {
   return `import { StocksAppConfig } from '@coding-challenge/stocks/data-access-app-config';
 
@@ -14,7 +15,10 @@ export const environment: StocksAppConfig = {
 };`;
 
 }
-
+function add() {
+  const ls = execSync('git add .');
+  console.log(ls.toString());
+}
 (function main() {
   const scriptCalled = process.argv[process.argv.length - 1];
   const precommit = scriptCalled === '--pre-commit';
@@ -32,6 +36,9 @@ export const environment: StocksAppConfig = {
     }
     const nextPath = path.join(rootDir, configPath);
     fs.writeFileSync(nextPath, template);
+  }
+  if (precommit) {
+    add();
   }
 })();
 
