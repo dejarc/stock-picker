@@ -9,18 +9,20 @@ import {
   PolygonPriceQueryResponse,
   PriceQueryResponse,
   PolygonQueryResponse,
-  ProductsRequest
+  ProductsRequest,
 } from '@coding-challenge/stocks/data-access-price-query';
 import { format } from 'date-fns';
 import * as boom from 'boom';
 import * as AWS from 'aws-sdk';
-const config = environment.production ? {} : {endpoint: 'http://localhost:8000',region: "us-west-1"};
+const config = environment.production
+  ? {}
+  : { endpoint: 'http://localhost:8000', region: 'us-west-1' };
 const client = new AWS.DynamoDB(config);
 const datePattern = /([0-9]{4}-[0-9]{2}-[0-9]{2})/;
 const init = async () => {
   const server = new Server({
     port: 3333,
-    host: 'localhost'
+    host: 'localhost',
   });
 
   server.route({
@@ -28,9 +30,9 @@ const init = async () => {
     path: '/',
     handler: (request, h) => {
       return {
-        hello: 'world'
+        hello: 'world',
       };
-    }
+    },
   });
 
   server.route({
@@ -39,22 +41,22 @@ const init = async () => {
     handler: async (request, h) => {
       const { startDate, endDate, symbol } = request.payload as ProductsRequest;
       validateJsonBody(startDate, endDate, symbol);
-      const savedQuery = await getExistingDynamoData(symbol, startDate, endDate)
+      const savedQuery = await getExistingDynamoData(
+        symbol,
+        startDate,
+        endDate
+      );
       if (savedQuery) {
         return JSON.parse(savedQuery);
       }
-      const url = `${
-        environment.apiURL
-      }/v2/aggs/ticker/${symbol}/range/1/day/${startDate}/${endDate}?apiKey=${
-        environment.apiKey
-      }`;
+      const url = `${environment.apiURL}/v2/aggs/ticker/${symbol}/range/1/day/${startDate}/${endDate}?apiKey=${environment.apiKey}`;
       const polygonResponse = await fetchPolygonDataAndFormatForResponse(url);
       updateDynamoData(symbol, startDate, endDate, polygonResponse);
       return polygonResponse;
     },
     options: {
-      cors: true
-    }
+      cors: true,
+    },
   });
   await server.start();
 
@@ -79,58 +81,70 @@ function validateJsonBody(startDate: string, endDate: string, symbol: string) {
     );
   }
 }
-async function updateDynamoData(symbol: string, startDate: string, endDate: string, queryData:  PriceQueryResponse[]) {
+async function updateDynamoData(
+  symbol: string,
+  startDate: string,
+  endDate: string,
+  queryData: PriceQueryResponse[]
+) {
   const params = {
     TableName: 'stocks',
     Item: {
-      stock_name: {S: symbol},
-      time_period: {S: `${startDate}:${endDate}`},
-      query: {S: JSON.stringify(queryData)}
+      stock_name: { S: symbol },
+      time_period: { S: `${startDate}:${endDate}` },
+      query: { S: JSON.stringify(queryData) },
     },
-  }
-  const update = await new Promise((res, rej) => {
+  };
+  await new Promise((res, rej) => {
     client.putItem(params, (err, data) => {
       if (err) {
-        rej(err)
+        rej(err);
       } else {
-        res(data)
+        res(data);
       }
     });
-  })
+  }).catch((err) => {
+    console.error(err);
+  });
 }
-async function getExistingDynamoData(symbol: string, startDate: string, endDate: string) {
+async function getExistingDynamoData(
+  symbol: string,
+  startDate: string,
+  endDate: string
+) {
   const params = {
-    TableName: "stocks",
+    TableName: 'stocks',
     Key: {
-      stock_name: {S: symbol},
-      time_period: {S: `${startDate}:${endDate}`},
+      stock_name: { S: symbol },
+      time_period: { S: `${startDate}:${endDate}` },
     },
-    AttributesToGet: [ // AttributeNameList
-      "query",
-    ]
-  }
-  const resp = await new Promise((res, rej) => {
+    AttributesToGet: [
+      // AttributeNameList
+      'query',
+    ],
+  };
+  const resp = (await new Promise((res, rej) => {
     client.getItem(params, (err, data) => {
-        if (err) {
-          rej(err)
-        } else {
-          res(data)
-        }
-      });
-  }) as any;
+      if (err) {
+        rej(err);
+      } else {
+        res(data);
+      }
+    });
+  })) as any;
   return resp?.Item?.query?.S;
 }
 function convertPriceQuery(
   response: PolygonPriceQueryResponse[]
 ): PriceQueryResponse[] {
-  const mapped = response.map(res => {
+  const mapped = response.map((res) => {
     return {
       date: format(new Date(res.t), 'MM/DD/YYYY'),
       open: res.o,
       high: res.h,
       low: res.l,
       close: res.c,
-      volume: res.v
+      volume: res.v,
     };
   });
   return mapped as PriceQueryResponse[];
@@ -150,7 +164,7 @@ async function fetchPolygonDataAndFormatForResponse(
     throw boom.badImplementation(errData);
   }
 }
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', (err) => {
   console.log(err);
   process.exit(1);
 });
