@@ -19,3 +19,4 @@
 .vscode/
 # IDE - VSCode
 /.angular
+dynamodb_local_latest
